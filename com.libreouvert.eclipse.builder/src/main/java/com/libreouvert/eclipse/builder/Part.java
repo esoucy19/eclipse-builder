@@ -2,32 +2,33 @@ package com.libreouvert.eclipse.builder;
 
 import java.util.Optional;
 
+import static com.libreouvert.eclipse.builder.StatType.*;
+
 public class Part {
     public final String name;
     public final PartType type;
-    public final Optional<CannonList> cannons;
-    public final Optional<MissileList> missiles;
-    public final HullValue hull = HullValue.of(0);
-    public final ComputerValue computer = ComputerValue.of(0);
-    public final ShieldValue shield = ShieldValue.of(0);
-    public final DriveValue drive = DriveValue.of(0);
-    public final EnergyValue energy = EnergyValue.of(0);
-    public final SlotValue slots = SlotValue.of(0)
+    public final Stat<Atk> atk;
+    public final Stat<Def> def;
+    public final Stat<Hp> hp;
+    public final Stat<Ini> ini;
+    public final Stat<Pwr> pwr;
+    public final Stat<Spd> spd;
     
-    private Part(String name,
+    public Part(String name,
                  PartType type,
-                 ComputerValue computer,
-                 EnergyValue power) {
+                 Stat<Atk> atk,
+                 Stat<Def> def,
+                 Stat<Hp> hp,
+                 Stat<Ini> ini,
+                 Stat<Pwr> pwr,
+                 Stat<Spd> spd) {
         this.name = name;
         this.type = type;
-        this.computer = computer;
-        this.energy = power;
-    }
-    
-    public static Part with(String name,
-                            PartType type,
-                            ComputerValue computer,
-                            EnergyValue power) {
-        return new Part(name, type, computer, power);
+        this.atk = atk;
+        this.def = def;
+        this.hp = hp;
+        this.ini = ini;
+        this.pwr = pwr;
+        this.spd = spd;
     }
 }
